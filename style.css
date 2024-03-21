@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  background-color: rgba(0, 0, 0, 0.932);
+}
+/* 
+span{
+  color: blue;
+} */
+
+main{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  gap:4%;
+  padding: 1em;
+}
+
+.img-div{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.img-div img{
+  width: 5em;
+}
+
+.input-div{
+  width: 35%;
+  height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-div textarea{
+  width: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  height: 100%;
+  padding: 1em;
+  border-radius: .4rem;
+}
+
+.rate-pitch-div{
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.range{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 1em;
+  color: white;
+}
+
+.range div{
+  display: flex;
+  width: 100%;
+  justify-content:space-between;
+  padding: .2em;
+}
+
+.range span{
+  color: rgb(0, 0, 236);
+  background-color: rgba(0, 0, 0, 0.856);
+  width: 25px;
+  height: 25px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.range input{
+  width: 100%;
+}
+
+select{
+  width: 35%;
+  padding: .8em;
+}
+
+select option{
+  background-color: rgba(0, 0, 0, 0.87);
+  color: white;
+}
+
+button{
+  background-color: blue;
+  width: 30%;
+  border: none;
+  padding: .8em 5em;
+  display: flex;
+  justify-content: center;
+  border-radius: 5em;
+  margin-top: 1em;
+  gap: 5%;
+  border: none;
+}
+
+button span{
+  color: white;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.flame{
+  background-image: url(/images/hypnosis-wave.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
