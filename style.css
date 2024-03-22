@@ -7,6 +7,7 @@
 
 body{
   background-color: rgba(0, 0, 0, 0.932);
+  height: 100vh;
 }
 
 .container{
@@ -14,8 +15,9 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3em;
+  padding: 2em;
   position: relative;
+  height: 100%;
 }
 
 main{
@@ -24,10 +26,11 @@ main{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80%;
+  height: 100%;
   flex-direction: column;
-  gap:1em;
+  gap:.8em;
   padding: 1em;
+  max-height: 500px;
 }
 
 .faq{
@@ -169,7 +172,8 @@ button span{
 
 
 .modal{
-  width: 45%;
+  user-select: none;
+  width: 50%;
   min-width: 350px;
   height: 55%;
   display: flex;
@@ -179,8 +183,10 @@ button span{
   gap: 7%;
   padding: 2em;
   border-radius: .5rem;
-  background-color: rgba(8, 8, 8, 0.959);
+  background-color: rgba(4, 2, 90, 0.5);
+  backdrop-filter: blur(10px); 
   animation: show 1s forwards ease;
+  text-shadow: 2px 2px 4px black;
 }
 
 @keyframes show {
@@ -204,5 +210,5 @@ button span{
 }
 
 .modal ul span {
-  color: blue;
+  color: rgb(28, 28, 253);
 }
