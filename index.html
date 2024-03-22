@@ -7,36 +7,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <section>FAQ</section>
-    <div class="img-div">
-      <img src="/images/audio-wave-icon.svg" alt="">
-    </div>
-    <form class="input-div">
-      <textarea placeholder="Input text here..." id="input-text" cols="30" rows="10"></textarea>
-    </form>
-    <div class="rate-pitch-div">
-      <div class="rate-div range">
-        <div>
-          <label for="rate">Rate</label>
-          <span class="rate-value">1</span>
-        </div>
-        <input type="range" name="" id="rate" min="0.5" max="2" value="1" step="0.1">
-      </div>      
-      <div class="pitch-div range">
-        <div>
-          <label for="rate">Pitch</label>
-          <span class="pitch-value">1</span>
-        </div>
-        <input type="range" name="" id="pitch" min="0" max="2" value="1" step="0.1">
-      </div>      
-    </div>
-    <select name="" id="voice-select">
-      <option>Choose voice </option>
-    </select>
-    <button id="submit-btn"><span>Speck</span><img src="/images/audio-icon.svg" alt=""></button>
-
-
+  <div class="container">
+    <main>
+      <section class="faq">FAQ</section>
+      <div class="img-div">
+        <img src="/images/audio-wave-icon.svg" alt="">
+      </div>
+      <form class="input-div">
+        <textarea placeholder="Input text here..." id="input-text" cols="30" rows="10"></textarea>
+      </form>
+      <div class="rate-pitch-div">
+        <div class="rate-div range">
+          <div>
+            <label for="rate">Rate</label>
+            <span class="rate-value">1</span>
+          </div>
+          <input type="range" name="" id="rate" min="0.5" max="2" value="1" step="0.1">
+        </div>      
+        <div class="pitch-div range">
+          <div>
+            <label for="rate">Pitch</label>
+            <span class="pitch-value">1</span>
+          </div>
+          <input type="range" name="" id="pitch" min="0" max="2" value="1" step="0.1">
+        </div>      
+      </div>
+      <select name="" id="voice-select">
+     </select>
+      <button id="submit-btn"><span>Speck</span><img src="/images/audio-icon.svg" alt=""></button>
+  
+  
+    </main>  
     <!-- --------------- -->
     <div class="overlay">
       <div class="modal">
@@ -50,8 +51,7 @@
         </ul>
       </div>
     </div>
-  </main>
-
+  </div>
 
   <script src="script.js"></script>
 </body>

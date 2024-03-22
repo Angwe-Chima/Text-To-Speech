@@ -8,21 +8,39 @@
 body{
   background-color: rgba(0, 0, 0, 0.932);
 }
-/* 
-span{
-  color: blue;
-} */
 
-main{
+.container{
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  gap:4%;
-  padding: .5em;
+  padding: 3em;
   position: relative;
+}
+
+main{
+  width: 50%;
+  min-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+  flex-direction: column;
+  gap:1em;
+  padding: 1em;
+}
+
+.faq{
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  border-radius:  5rem;
+  cursor: pointer;
+  height: 30px;
+  color: white;
+  background-color: blue;
 }
 
 .img-div{
@@ -36,7 +54,7 @@ main{
 }
 
 .input-div{
-  width: 35%;
+  width: 100%;
   height: 5em;
   display: flex;
   justify-content: center;
@@ -54,13 +72,14 @@ main{
 }
 
 .rate-pitch-div{
-  width: 35%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  gap: 2em;
+  gap: 1.5em;
+  padding: 1em;
 }
 
 .range{
@@ -69,7 +88,7 @@ main{
   align-items: center;
   flex-direction: column;
   width: 100%;
-  gap: 1em;
+  gap: .5em;
   color: white;
 }
 
@@ -99,7 +118,7 @@ main{
 }
 
 select{
-  width: 35%;
+  width: 100%;
   padding: .8em;
 }
 
@@ -110,7 +129,7 @@ select option{
 
 button{
   background-color: blue;
-  width: 30%;
+  width: 90%;
   border: none;
   padding: .8em 5em;
   cursor: pointer;
@@ -139,7 +158,7 @@ button span{
 .overlay{
   width: 100%;
   color: white;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,15 +206,3 @@ button span{
   color: blue;
 }
 
-section{
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 800;
-  border-radius:  5rem;
-  cursor: pointer;
-  height: 30px;
-  color: white;
-  background-color: blue;
-}
