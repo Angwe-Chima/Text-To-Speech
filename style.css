@@ -170,6 +170,7 @@ button span{
 
 .modal{
   width: 45%;
+  min-width: 350px;
   height: 55%;
   display: flex;
   justify-content: center;
@@ -199,10 +200,9 @@ button span{
 }
 
 .modal ul li{
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .modal ul span {
   color: blue;
 }
-
