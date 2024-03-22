@@ -21,7 +21,8 @@ main{
   height: 100vh;
   flex-direction: column;
   gap:4%;
-  padding: 1em;
+  padding: .5em;
+  position: relative;
 }
 
 .img-div{
@@ -58,6 +59,7 @@ main{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  cursor: pointer;
   gap: 2em;
 }
 
@@ -111,6 +113,7 @@ button{
   width: 30%;
   border: none;
   padding: .8em 5em;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   border-radius: 5em;
@@ -130,4 +133,69 @@ button span{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+}
+
+.overlay{
+  width: 100%;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: absolute;
+  background-image: linear-gradient( to left, rgba(0, 0, 0, 0.719),rgba(0, 0, 94, 0.514), rgba(0, 0, 0, 0.637));
+}
+
+
+.modal{
+  width: 45%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 7%;
+  padding: 2em;
+  border-radius: .5rem;
+  background-color: rgba(8, 8, 8, 0.959);
+  animation: show 1s forwards ease;
+}
+
+@keyframes show {
+  0%{
+    transform: scale(0%);
+  }100%{
+    transform: scale(100%)
+  }
+}
+
+.modal ul{
+  display: flex;
+  justify-content: center;
+  align-items: start;  
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal ul li{
+  font-size: 1.1rem;
+}
+
+.modal ul span {
+  color: blue;
+}
+
+section{
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  border-radius:  5rem;
+  cursor: pointer;
+  height: 30px;
+  color: white;
+  background-color: blue;
 }

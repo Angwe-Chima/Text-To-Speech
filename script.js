@@ -11,6 +11,8 @@ const spkButton = document.querySelector('button span')
 const spkImage = document.querySelector('button img')
 const submitBtn = document.querySelector('#submit-btn')
 const main = document.querySelector('main')
+const overlay = document.querySelector('.overlay')
+const faq = document.querySelector('section')
 
 // init voice array using the api
 let voices = [];
@@ -106,3 +108,37 @@ pitch.addEventListener('change', ()=>{
 voicSelect.addEventListener('change', ()=>{
   speak()
 })
+
+overlay.addEventListener('dblclick', ()=>{
+  overlay.style.display = 'none'
+})
+
+
+faq.addEventListener('click', ()=>{
+  overlay.style.display = 'flex'
+})
+
+
+
+
+
+// I see, you're looking for an API that can help you keep track of insulting words. One option is to use the "HateSonar" API, which provides a comprehensive list of hate speech and offensive language. It offers endpoints for detecting, analyzing, and monitoring such content. Here's how you can use it:
+
+// 1. Sign up for a free API key on the [HateSonar website](https://hate.sonar.digital/).
+
+// 2. Once you have your API key, you can use it to authenticate your requests. Here's an example using JavaScript fetch:
+
+//    ```javascript
+//    const apiKey = 'YOUR_API_KEY';
+//    const text = 'This is a sentence with an offensive word.';
+   
+//    fetch(`https://api.sonar.digital/v1/hatespeech?token=${apiKey}&text=${text}`)
+//      .then(response => response.json())
+//      .then(data => {
+//        const offensiveWords = data.result.offensive_words;
+//        console.log("Offensive words:", offensiveWords);
+//      })
+//      .catch(error => console.error("Error:", error));
+//    ```
+
+// Replace `'YOUR_API_KEY'` with your actual API key. This example sends a request to the HateSonar API to analyze the text and detect any offensive words. The API will return a list of offensive words found in the text.
