@@ -1,86 +1,94 @@
-const synth = speechSynthesis;
+const synth = window.speechSynthesis;
 // dom elements
 const inputForm = document.querySelector('form');
 const inputText = document.querySelector('#input-text');
 const voicSelect = document.querySelector('#voice-select');
 const rate = document.querySelector('#rate');
-const rateValue = document.querySelector('.rate-value')
+const rateValue = document.querySelector('.rate-value');
 const pitch = document.querySelector('#pitch');
-const pitchValue = document.querySelector('.pitch-value')
-const spkButton = document.querySelector('button span')
-const spkImage = document.querySelector('button img')
-const submitBtn = document.querySelector('#submit-btn')
-const main = document.querySelector('.container')
-const overlay = document.querySelector('.overlay')
-const faq = document.querySelector('section')
+const pitchValue = document.querySelector('.pitch-value');
+const spkButton = document.querySelector('button span');
+const spkImage = document.querySelector('button img');
+const submitBtn = document.querySelector('#submit-btn');
+const main = document.querySelector('.container');
+const overlay = document.querySelector('.overlay');
+const faq = document.querySelector('section');
 
-// init voice array using the api
+// Init voice array
 let voices = [];
 
-const getVoices = async ()=>{
-  voices = await synth.getVoices(); 
-  // Add voice as options of select
-  voices.forEach((voice)=>{
-    let option = document.createElement('option')
-    option.setAttribute('data-lang', voice.lang)
-    option.setAttribute('data-name', voice.name)
-    option.innerText =  voice.name + ' (' + voice.lang + ')'
-    voicSelect.append(option)
-  })
+const getVoices = () => {
+  voices = synth.getVoices();
+  // Add voice options to the select dropdown
+  voicSelect.innerHTML = ''; // Clear previous options
+  voices.forEach((voice) => {
+    let option = document.createElement('option');
+    option.setAttribute('data-lang', voice.lang);
+    option.setAttribute('data-name', voice.name);
+    option.innerText = `${voice.name} (${voice.lang})`;
+    voicSelect.appendChild(option);
+  });
+};
+
+// Load voices and update the UI when voices are available
+if (synth.onvoiceschanged !== undefined) {
+  synth.onvoiceschanged = getVoices;
 }
-getVoices()
 
-const speak = ()=>{
-  // check if speaking 
-  if(synth.speaking) return;
-  else{
-    spkButton.innerText = 'Speaking..'
-    spkImage.src = '/images/audio-wave-icon.svg'
-    main.classList.add('flame')
-  }
+// Trigger initial loading of voices
+getVoices();
 
-  // check if speaking ends
-  let spechText = null;
-  if(inputText.value){
-    spechText = new SpeechSynthesisUtterance(inputText.value)
-    spechText.onend = e =>{
-      spkButton.innerText = 'Speak'
-      spkImage.src = '/images/audio-icon.svg'
-      main.classList.remove('flame')
-      stopSpeech()
-    }
-    // check for speaking error
-    spechText.onerror = e =>{
-      console.error('something went wrong -!-')
-    }
-    // select option
-    const selectedVoice = voicSelect.selectedOptions[0].getAttribute('data-name')
-    // loop through voices
-    voices.forEach((voice)=>{
-      if(voice.name === selectedVoice){
-        spechText.voice = voice
+const speak = () => {
+  // Prevent multiple speech actions
+  if (synth.speaking) return;
+
+  if (inputText.value !== '') {
+    spkButton.innerText = 'Speaking..';
+    spkImage.src = '/images/audio-wave-icon.svg';
+    main.classList.add('flame');
+
+    const speechText = new SpeechSynthesisUtterance(inputText.value);
+
+    // When speech ends
+    speechText.onend = () => {
+      spkButton.innerText = 'Speak';
+      spkImage.src = '/images/audio-icon.svg';
+      main.classList.remove('flame');
+      stopSpeech();
+    };
+
+    // If speech fails
+    speechText.onerror = () => {
+      console.error('Something went wrong -!-');
+    };
+
+    // Set the selected voice
+    const selectedVoice = voicSelect.selectedOptions[0].getAttribute('data-name');
+    voices.forEach((voice) => {
+      if (voice.name === selectedVoice) {
+        speechText.voice = voice;
       }
-    })
-    // set pitch an rate
-    spechText.rate = rate.value
-    spechText.pitch = pitch.value
-    // speak !!
-    synth.speak(spechText)
-  }else{
-    alert('field cannot be empty!!')
-    return
-  }
-}
+    });
 
-// event listeners
-submitBtn.addEventListener('click', ()=>{
-  if(inputText.value){
+    // Set pitch and rate
+    speechText.rate = rate.value;
+    speechText.pitch = pitch.value;
+
+    // Speak the text
+    synth.speak(speechText);
+  } else {
+    alert('Text field cannot be empty!');
+  }
+};
+
+// Event listeners
+submitBtn.addEventListener('click', () => {
+  if (inputText.value) {
     speak();
     inputText.blur();
-  }else return 
-})
+  }
+});
 
-// Function to stop speech
 const stopSpeech = () => {
   if (synth.speaking) {
     synth.cancel();
@@ -90,28 +98,29 @@ const stopSpeech = () => {
   }
 };
 
-// Double-click event listener on submitBtn
+// Double-click event to stop speech
 submitBtn.addEventListener('dblclick', stopSpeech);
 
-// rate value change 
-rate.addEventListener('change', ()=>{
-  rateValue.innerText = rate.value
-})
+// Rate change
+rate.addEventListener('change', () => {
+  rateValue.innerText = rate.value;
+});
 
-// pitch value change 
-pitch.addEventListener('change', ()=>{
-  pitchValue.innerText = pitch.value
-})
+// Pitch change
+pitch.addEventListener('change', () => {
+  pitchValue.innerText = pitch.value;
+});
 
-// voice select change 
-voicSelect.addEventListener('change', ()=>{
-  speak()
-})
+// Voice selection change
+voicSelect.addEventListener('change', () => {
+  speak();
+});
 
-overlay.addEventListener('dblclick', ()=>{
-  overlay.style.display = 'none'
-})
+// Overlay interactions
+overlay.addEventListener('dblclick', () => {
+  overlay.style.display = 'none';
+});
 
-faq.addEventListener('click', ()=>{
-  overlay.style.display = 'flex'
-})
+faq.addEventListener('click', () => {
+  overlay.style.display = 'flex';
+});
